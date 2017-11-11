@@ -1,0 +1,6 @@
+framework module Pods_TMDBAT {
+  umbrella header "Pods-TMDBAT-umbrella.h"
+
+  export *
+  module * { export * }
+}
