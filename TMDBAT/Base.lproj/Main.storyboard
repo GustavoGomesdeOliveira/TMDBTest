@@ -22,9 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4GD-Ly-Xum">
+                            <searchBar contentMode="redraw" placeholder="Find your movie" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4GD-Ly-Xum">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="MUa-8b-OP5"/>
                                 </connections>
@@ -43,6 +43,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OX-X7-x1h">
                                                     <rect key="frame" x="8.5" y="14.5" width="357" height="264"/>
                                                     <subviews>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Pnd-xd-0k6">
+                                                            <rect key="frame" x="159.5" y="113.5" width="37" height="37"/>
+                                                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </activityIndicatorView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2lc-VQ-ZxP">
                                                             <rect key="frame" x="0.0" y="0.0" width="357" height="264"/>
                                                         </imageView>
@@ -79,11 +83,13 @@
                                                     <constraints>
                                                         <constraint firstItem="2lc-VQ-ZxP" firstAttribute="width" secondItem="6OX-X7-x1h" secondAttribute="width" id="09e-5U-CDV"/>
                                                         <constraint firstAttribute="trailing" secondItem="ZHW-c5-5Rh" secondAttribute="trailing" id="56s-be-FsS"/>
+                                                        <constraint firstItem="Pnd-xd-0k6" firstAttribute="centerX" secondItem="6OX-X7-x1h" secondAttribute="centerX" id="8Ra-Jo-qvY"/>
                                                         <constraint firstItem="ZHW-c5-5Rh" firstAttribute="leading" secondItem="6OX-X7-x1h" secondAttribute="leading" id="NSL-NK-AED"/>
                                                         <constraint firstItem="2lc-VQ-ZxP" firstAttribute="centerX" secondItem="6OX-X7-x1h" secondAttribute="centerX" id="dZ5-6M-bhg"/>
                                                         <constraint firstAttribute="bottom" secondItem="ZHW-c5-5Rh" secondAttribute="bottom" id="lNo-59-BQR"/>
                                                         <constraint firstItem="2lc-VQ-ZxP" firstAttribute="height" secondItem="6OX-X7-x1h" secondAttribute="height" id="oe6-nt-9za"/>
                                                         <constraint firstItem="2lc-VQ-ZxP" firstAttribute="centerY" secondItem="6OX-X7-x1h" secondAttribute="centerY" id="pgJ-ms-Qdn"/>
+                                                        <constraint firstItem="Pnd-xd-0k6" firstAttribute="centerY" secondItem="6OX-X7-x1h" secondAttribute="centerY" id="xGV-Kn-2Cu"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -100,6 +106,7 @@
                                             <outlet property="ImgMoviePoster" destination="2lc-VQ-ZxP" id="gha-xj-KTD"/>
                                             <outlet property="LblMovieName" destination="oUR-bs-bT3" id="vEt-8u-Bdb"/>
                                             <outlet property="LblMovieReleaseDate" destination="SRP-EO-83j" id="ptp-Xi-TLc"/>
+                                            <outlet property="LoadingImageIndicator" destination="Pnd-xd-0k6" id="Pcb-S4-QuA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

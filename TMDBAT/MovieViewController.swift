@@ -25,6 +25,7 @@ class MovieViewController: UIViewController {
         super.viewDidLoad()
         loadMovie()
         getMovieGenres()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -32,7 +33,7 @@ class MovieViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+        
     func loadMovie(){
         
         LblMovieTitle.text = self.movie.tittle

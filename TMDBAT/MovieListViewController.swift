@@ -21,48 +21,39 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
     var movieToSend: Movie!
     var isSearching = false
     var filteredData: [Movie]!
-    var canLoadMore = false
+    var canLoadMore = true
+    var alert: UIAlertController!
+    var loadingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         movieList = [Movie]()
         genreList = [[String:String]]()
         
+        self.loadingView = LoadingView.instanceFromNib()
+        loadingView.center = self.view.center
+        self.view.addSubview(loadingView)
+        
+        
         getMovielist()
         moviesImage = [UIImage]()
         getGenres()
         
         searchBar.returnKeyType = UIReturnKeyType.done
-        
-//        group.enter()
-//        getMovielist() {
-//            self.getPosterImage()
-//            group.leave()
-//        }
-        
-      //  group.enter()
-//        getPosterImage() {
-//            group.leave()
-//        }
-//        
-//        group.notify(queue: .main) {
-//            print("both requests done")
-//        }
-//        
     
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
     func getMovielist(){
         
+        if (canLoadMore) {
+        
         DispatchQueue.main.async {
-            
+            self.loadingView.isHidden = false
+            self.canLoadMore = false
             let appDelegate = UIApplication.shared.delegate as!  AppDelegate
             let apiKey = appDelegate.apiKey
             
@@ -72,40 +63,78 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
                 "page": self.page.description
             ]
             
-            let alert = UIAlertController(title: "Upcoming Movies", message: "Loading", preferredStyle: UIAlertControllerStyle.alert)
-            self.present(alert, animated: true, completion: nil)
-            
             Alamofire.request("https://api.themoviedb.org/3/movie/upcoming?api_key&language=en-US&page", parameters: parameters).responseJSON(completionHandler: {(response) in
-                print(response.request?.url)
                 
                 if let json = response.result.value{
                     
-                    var upcomingMovie: Movie!
-                    let movieDict = json as! NSDictionary
-                    let movieArray = movieDict["results"] as! NSArray
-                    
-                    for movie in movieArray{
+                    if(((json as! NSDictionary)["results"] as! NSArray).count != 0) {
                         
-                        upcomingMovie = Movie()
                         
-                        upcomingMovie.tittle = (movie as! NSDictionary)["title"] as! String
-                        upcomingMovie.overview = (movie as! NSDictionary)["overview"] as! String
+                        var upcomingMovie: Movie!
+                        //let movieDict = json as! NSDictionary
+                        let movieArray = (json as! NSDictionary)["results"] as! NSArray
                         
-                        upcomingMovie.posterPath = (movie as! NSDictionary)["poster_path"] as! String
-                        upcomingMovie.releaseDate = (movie as! NSDictionary)["release_date"] as! String
-                        
-                        upcomingMovie.genre = (movie as! NSDictionary)["genre_ids"] as! NSArray as! [Int]
-                        
-                        self.movieList.append(upcomingMovie)
-                    }
-                }
-                self.getPosterImage()
-            })
-            
-            alert.dismiss(animated: true, completion: nil)
-        }
- 
+                        for movie in movieArray {
+                            
+                            upcomingMovie = Movie()
+                            
+                            if ((self.nullToNil(value: (movie as! NSDictionary)["overview"] as AnyObject)) != nil){
+                                
+                                upcomingMovie.overview = (movie as! NSDictionary)["overview"] as! String
+                                
+                            }
+                            
+                            if ((self.nullToNil(value: (movie as! NSDictionary)["title"] as AnyObject)) != nil){
+                                
+                                upcomingMovie.tittle = (movie as! NSDictionary)["title"] as! String
+                                
+                            }
+                            
+                            if ((self.nullToNil(value: (movie as! NSDictionary)["poster_path"] as AnyObject)) != nil){
+                                
+                                upcomingMovie.posterPath = (movie as! NSDictionary)["poster_path"] as! String
+                                
+                            } else {
+                                
+                                upcomingMovie.posterPath = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+                            }
+                            
+                            if ((self.nullToNil(value: (movie as! NSDictionary)["release_date"] as AnyObject)) != nil){
+                                
+                                upcomingMovie.releaseDate = (movie as! NSDictionary)["release_date"] as! String
+                            }
+                            
+                            if ((self.nullToNil(value: (movie as! NSDictionary)["genre_ids"] as AnyObject)) != nil){
+                                
+                                upcomingMovie.genre = (movie as! NSDictionary)["genre_ids"] as! NSArray as! [Int]
+                            }
 
+                                self.movieList.append(upcomingMovie)
+                            
+                        }
+                        self.getPosterImage()
+                    } else {
+                        
+                        let alert = UIAlertController(title: "No more movies", message: "No more upcoming movies avaiable", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                    
+                }
+            })
+            }
+        }
+
+    }
+    
+    
+    func nullToNil(value : AnyObject?) -> AnyObject? {
+        if value is NSNull {
+            return nil
+        } else {
+            return value
+        }
     }
     
     func getPosterImage(){
@@ -117,24 +146,32 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         DispatchQueue.main.async {
             
             for movie in self.movieList{
+
                 
                 Alamofire.request(baseURL! + posterSize! + movie.posterPath).responseData(completionHandler:{(response) in
                     
                     
                     if let data = response.data {
                         
-                        movie.posterImage = (UIImage(data: data)!)
+                        if ((self.nullToNil(value: data as AnyObject)) != nil){
+                            
+                            if let image = UIImage(data: data) {
+                                movie.posterImage = image
+                            }
+                        }
                         
                     }
-                    
                     self.movieListTableView.reloadData()
-                    self.canLoadMore = true
+                    
                 })
                 
+                self.loadingView.isHidden = true
                 
             }
+            self.canLoadMore = true
             
         }
+        
     }
     
     
@@ -228,7 +265,12 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
             movie = movieList[indexPath.row]
         }
         
-        cell.ImgMoviePoster.image = movie.posterImage
+        if (movie.posterImage != nil) {
+            
+            cell.ImgMoviePoster.image = movie.posterImage
+            cell.LoadingImageIndicator.stopAnimating()
+        }
+        
         cell.LblMovieName.text = movie.tittle
         cell.LblMovieReleaseDate.text = movie.releaseDate
         return cell;
@@ -241,8 +283,7 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
         if (distanceFromBottom < height && canLoadMore) {
             
-            canLoadMore = false
-            self.page += page
+            self.page = page + 1
             getMovielist()
         }
     }
@@ -261,7 +302,7 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             
             isSearching = true
-            
+            self.loadingView.isHidden = true
             filteredData = movieList.filter({$0.tittle.contains(searchBar.text!)})
             
             DispatchQueue.main.async {
@@ -270,4 +311,21 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        searchBar.returnKeyType = UIReturnKeyType.done
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        view.endEditing(true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+        searchBar.returnKeyType = UIReturnKeyType.done
+    }
+    
+
 }
