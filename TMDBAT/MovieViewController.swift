@@ -19,12 +19,14 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var LblReleaseDate: UILabel!
     @IBOutlet weak var TxtMovieDescription: UITextView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadMovie()
         getMovieGenres()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        ImgMovie.isUserInteractionEnabled = true
+        ImgMovie.addGestureRecognizer(tapGestureRecognizer)
         
         // Do any additional setup after loading the view.
     }
@@ -61,14 +63,22 @@ class MovieViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        performSegue(withIdentifier: "seguePoster", sender: nil)
+        
     }
-    */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "seguePoster") {
+            
+            let destinationVC = segue.destination as! PosterViewController
+            destinationVC.posterImage = ImgMovie.image
+            
+        }
+        
+    }
+    
 }
