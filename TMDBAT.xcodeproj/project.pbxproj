@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0629DAD01FB755150027451C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629DACF1FB755150027451C /* AppDelegate.swift */; };
-		0629DAD21FB755150027451C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629DAD11FB755150027451C /* ViewController.swift */; };
 		0629DAD51FB755150027451C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0629DAD31FB755150027451C /* Main.storyboard */; };
 		0629DAD81FB755150027451C /* TMDBAT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0629DAD61FB755150027451C /* TMDBAT.xcdatamodeld */; };
 		0629DADA1FB755150027451C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0629DAD91FB755150027451C /* Assets.xcassets */; };
@@ -16,6 +15,9 @@
 		0629DAE81FB755150027451C /* TMDBATTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629DAE71FB755150027451C /* TMDBATTests.swift */; };
 		0629DAF31FB755150027451C /* TMDBATUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629DAF21FB755150027451C /* TMDBATUITests.swift */; };
 		062FF31099663E53FA23AB48 /* Pods_TMDBAT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B41953246A03A9B29140F83 /* Pods_TMDBAT.framework */; };
+		06483FA71FB8C61300F39968 /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06483FA61FB8C61300F39968 /* PosterViewController.swift */; };
+		067523E41FB8B6F4002B9044 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 067523E31FB8B6F4002B9044 /* LoadingView.xib */; };
+		067523E61FB8B7F2002B9044 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067523E51FB8B7F2002B9044 /* LoadingView.swift */; };
 		06B633791FB7A3D40098395F /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B633781FB7A3D40098395F /* MovieViewController.swift */; };
 		06D82D0A1FB760B400F48B26 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D82D091FB760B400F48B26 /* MovieListViewController.swift */; };
 		06D82D0E1FB7615300F48B26 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D82D0D1FB7615300F48B26 /* MovieTableViewCell.swift */; };
@@ -44,7 +46,6 @@
 /* Begin PBXFileReference section */
 		0629DACC1FB755150027451C /* TMDBAT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBAT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0629DACF1FB755150027451C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0629DAD11FB755150027451C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0629DAD41FB755150027451C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0629DAD71FB755150027451C /* TMDBAT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TMDBAT.xcdatamodel; sourceTree = "<group>"; };
 		0629DAD91FB755150027451C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +57,9 @@
 		0629DAEE1FB755150027451C /* TMDBATUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBATUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0629DAF21FB755150027451C /* TMDBATUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBATUITests.swift; sourceTree = "<group>"; };
 		0629DAF41FB755150027451C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06483FA61FB8C61300F39968 /* PosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
+		067523E31FB8B6F4002B9044 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		067523E51FB8B7F2002B9044 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		06B633781FB7A3D40098395F /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		06D82D091FB760B400F48B26 /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		06D82D0D1FB7615300F48B26 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,8 +129,10 @@
 			isa = PBXGroup;
 			children = (
 				0629DACF1FB755150027451C /* AppDelegate.swift */,
-				0629DAD11FB755150027451C /* ViewController.swift */,
+				06483FA61FB8C61300F39968 /* PosterViewController.swift */,
 				0629DAD31FB755150027451C /* Main.storyboard */,
+				067523E31FB8B6F4002B9044 /* LoadingView.xib */,
+				067523E51FB8B7F2002B9044 /* LoadingView.swift */,
 				06B633781FB7A3D40098395F /* MovieViewController.swift */,
 				06D82D091FB760B400F48B26 /* MovieListViewController.swift */,
 				06D82D0F1FB767B700F48B26 /* Movie.swift */,
@@ -300,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0629DADD1FB755150027451C /* LaunchScreen.storyboard in Resources */,
+				067523E41FB8B6F4002B9044 /* LoadingView.xib in Resources */,
 				0629DADA1FB755150027451C /* Assets.xcassets in Resources */,
 				0629DAD51FB755150027451C /* Main.storyboard in Resources */,
 			);
@@ -478,9 +485,10 @@
 			files = (
 				06D82D0E1FB7615300F48B26 /* MovieTableViewCell.swift in Sources */,
 				06B633791FB7A3D40098395F /* MovieViewController.swift in Sources */,
+				06483FA71FB8C61300F39968 /* PosterViewController.swift in Sources */,
 				0629DAD81FB755150027451C /* TMDBAT.xcdatamodeld in Sources */,
 				06D82D101FB767B700F48B26 /* Movie.swift in Sources */,
-				0629DAD21FB755150027451C /* ViewController.swift in Sources */,
+				067523E61FB8B7F2002B9044 /* LoadingView.swift in Sources */,
 				0629DAD01FB755150027451C /* AppDelegate.swift in Sources */,
 				06D82D0A1FB760B400F48B26 /* MovieListViewController.swift in Sources */,
 			);
