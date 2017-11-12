@@ -182,7 +182,7 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
-    
+    //Get genres function
     func getGenres(){
         
         DispatchQueue.main.async {
