@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		060FA3FB1FB8E4CE007A3BAD /* print_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 060FA3F61FB8E4CE007A3BAD /* print_01.jpg */; };
-		060FA3FC1FB8E4CE007A3BAD /* print02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 060FA3F71FB8E4CE007A3BAD /* print02.jpg */; };
-		060FA3FD1FB8E4CE007A3BAD /* print03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 060FA3F81FB8E4CE007A3BAD /* print03.jpg */; };
-		060FA3FE1FB8E4CE007A3BAD /* print04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 060FA3F91FB8E4CE007A3BAD /* print04.jpg */; };
-		060FA3FF1FB8E4CE007A3BAD /* print05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 060FA3FA1FB8E4CE007A3BAD /* print05.jpg */; };
 		0629DAD01FB755150027451C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629DACF1FB755150027451C /* AppDelegate.swift */; };
 		0629DAD51FB755150027451C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0629DAD31FB755150027451C /* Main.storyboard */; };
 		0629DAD81FB755150027451C /* TMDBAT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0629DAD61FB755150027451C /* TMDBAT.xcdatamodeld */; };
@@ -49,11 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		060FA3F61FB8E4CE007A3BAD /* print_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = print_01.jpg; sourceTree = "<group>"; };
-		060FA3F71FB8E4CE007A3BAD /* print02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = print02.jpg; sourceTree = "<group>"; };
-		060FA3F81FB8E4CE007A3BAD /* print03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = print03.jpg; sourceTree = "<group>"; };
-		060FA3F91FB8E4CE007A3BAD /* print04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = print04.jpg; sourceTree = "<group>"; };
-		060FA3FA1FB8E4CE007A3BAD /* print05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = print05.jpg; sourceTree = "<group>"; };
 		0629DACC1FB755150027451C /* TMDBAT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBAT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0629DACF1FB755150027451C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0629DAD41FB755150027451C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,23 +103,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		060FA3F51FB8E4BC007A3BAD /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				060FA3F61FB8E4CE007A3BAD /* print_01.jpg */,
-				060FA3F71FB8E4CE007A3BAD /* print02.jpg */,
-				060FA3F81FB8E4CE007A3BAD /* print03.jpg */,
-				060FA3F91FB8E4CE007A3BAD /* print04.jpg */,
-				060FA3FA1FB8E4CE007A3BAD /* print05.jpg */,
-			);
-			name = Screenshots;
-			path = TMDBAT;
-			sourceTree = "<group>";
-		};
 		0629DAC31FB755150027451C = {
 			isa = PBXGroup;
 			children = (
-				060FA3F51FB8E4BC007A3BAD /* Screenshots */,
 				0629DACE1FB755150027451C /* TMDBAT */,
 				0629DAE61FB755150027451C /* TMDBATTests */,
 				0629DAF11FB755150027451C /* TMDBATUITests */,
@@ -329,13 +305,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				060FA3FD1FB8E4CE007A3BAD /* print03.jpg in Resources */,
-				060FA3FF1FB8E4CE007A3BAD /* print05.jpg in Resources */,
 				0629DADD1FB755150027451C /* LaunchScreen.storyboard in Resources */,
-				060FA3FC1FB8E4CE007A3BAD /* print02.jpg in Resources */,
-				060FA3FE1FB8E4CE007A3BAD /* print04.jpg in Resources */,
 				067523E41FB8B6F4002B9044 /* LoadingView.xib in Resources */,
-				060FA3FB1FB8E4CE007A3BAD /* print_01.jpg in Resources */,
 				0629DADA1FB755150027451C /* Assets.xcassets in Resources */,
 				0629DAD51FB755150027451C /* Main.storyboard in Resources */,
 			);
