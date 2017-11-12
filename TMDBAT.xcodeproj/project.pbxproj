@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0629DAD01FB755150027451C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629DACF1FB755150027451C /* AppDelegate.swift */; };
-		0629DAD21FB755150027451C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629DAD11FB755150027451C /* ViewController.swift */; };
 		0629DAD51FB755150027451C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0629DAD31FB755150027451C /* Main.storyboard */; };
 		0629DAD81FB755150027451C /* TMDBAT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0629DAD61FB755150027451C /* TMDBAT.xcdatamodeld */; };
 		0629DADA1FB755150027451C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0629DAD91FB755150027451C /* Assets.xcassets */; };
@@ -47,7 +46,6 @@
 /* Begin PBXFileReference section */
 		0629DACC1FB755150027451C /* TMDBAT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBAT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0629DACF1FB755150027451C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0629DAD11FB755150027451C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0629DAD41FB755150027451C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0629DAD71FB755150027451C /* TMDBAT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TMDBAT.xcdatamodel; sourceTree = "<group>"; };
 		0629DAD91FB755150027451C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				0629DACF1FB755150027451C /* AppDelegate.swift */,
-				0629DAD11FB755150027451C /* ViewController.swift */,
 				06483FA61FB8C61300F39968 /* PosterViewController.swift */,
 				0629DAD31FB755150027451C /* Main.storyboard */,
 				067523E31FB8B6F4002B9044 /* LoadingView.xib */,
@@ -491,7 +488,6 @@
 				06483FA71FB8C61300F39968 /* PosterViewController.swift in Sources */,
 				0629DAD81FB755150027451C /* TMDBAT.xcdatamodeld in Sources */,
 				06D82D101FB767B700F48B26 /* Movie.swift in Sources */,
-				0629DAD21FB755150027451C /* ViewController.swift in Sources */,
 				067523E61FB8B7F2002B9044 /* LoadingView.swift in Sources */,
 				0629DAD01FB755150027451C /* AppDelegate.swift in Sources */,
 				06D82D0A1FB760B400F48B26 /* MovieListViewController.swift in Sources */,

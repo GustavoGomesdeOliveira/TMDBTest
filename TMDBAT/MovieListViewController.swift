@@ -51,81 +51,88 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         
         if (canLoadMore) {
         
-        DispatchQueue.main.async {
-            self.loadingView.isHidden = false
-            self.canLoadMore = false
-            let appDelegate = UIApplication.shared.delegate as!  AppDelegate
-            let apiKey = appDelegate.apiKey
+            DispatchQueue.main.async {
+                self.loadingView.isHidden = false
+                self.canLoadMore = false
+                let appDelegate = UIApplication.shared.delegate as!  AppDelegate
+                let apiKey = appDelegate.apiKey
             
-            let parameters: Parameters = [
+                let parameters: Parameters = [
                 
-                "api_key":apiKey,
-                "page": self.page.description
-            ]
+                    "api_key":apiKey,
+                    "page": self.page.description
+                ]
             
-            Alamofire.request("https://api.themoviedb.org/3/movie/upcoming?api_key&language=en-US&page", parameters: parameters).responseJSON(completionHandler: {(response) in
+                Alamofire.request("https://api.themoviedb.org/3/movie/upcoming?api_key&language=en-US&page", parameters: parameters).responseJSON(completionHandler: {(response) in
                 
-                if let json = response.result.value{
+                    if let json = response.result.value{
                     
-                    if(((json as! NSDictionary)["results"] as! NSArray).count != 0) {
+                        if(((json as! NSDictionary)["results"] as! NSArray).count != 0) {
                         
                         
-                        var upcomingMovie: Movie!
-                        //let movieDict = json as! NSDictionary
-                        let movieArray = (json as! NSDictionary)["results"] as! NSArray
+                            var upcomingMovie: Movie!
+                            let movieArray = (json as! NSDictionary)["results"] as! NSArray
                         
-                        for movie in movieArray {
+                            for movie in movieArray {
                             
-                            upcomingMovie = Movie()
+                                upcomingMovie = Movie()
                             
-                            if ((self.nullToNil(value: (movie as! NSDictionary)["overview"] as AnyObject)) != nil){
-                                
-                                upcomingMovie.overview = (movie as! NSDictionary)["overview"] as! String
-                                
-                            }
+                                upcomingMovie.overview = self.applyStringValue(value: (movie as! NSDictionary)["overview"] as AnyObject)
                             
-                            if ((self.nullToNil(value: (movie as! NSDictionary)["title"] as AnyObject)) != nil){
-                                
-                                upcomingMovie.tittle = (movie as! NSDictionary)["title"] as! String
-                                
-                            }
+                                upcomingMovie.tittle = self.applyStringValue(value: (movie as! NSDictionary)["title"] as AnyObject)
                             
-                            if ((self.nullToNil(value: (movie as! NSDictionary)["poster_path"] as AnyObject)) != nil){
-                                
-                                upcomingMovie.posterPath = (movie as! NSDictionary)["poster_path"] as! String
-                                
-                            } else {
-                                
-                                upcomingMovie.posterPath = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
-                            }
+                                upcomingMovie.posterPath = self.applyStringValue(value: (movie as! NSDictionary)["poster_path"] as AnyObject)
                             
-                            if ((self.nullToNil(value: (movie as! NSDictionary)["release_date"] as AnyObject)) != nil){
-                                
-                                upcomingMovie.releaseDate = (movie as! NSDictionary)["release_date"] as! String
-                            }
+                                upcomingMovie.releaseDate = self.applyStringValue(value: (movie as! NSDictionary)["release_date"] as AnyObject)
                             
-                            if ((self.nullToNil(value: (movie as! NSDictionary)["genre_ids"] as AnyObject)) != nil){
-                                
-                                upcomingMovie.genre = (movie as! NSDictionary)["genre_ids"] as! NSArray as! [Int]
-                            }
+                                upcomingMovie.genre = self.applyIntArrayValue(value: (movie as! NSDictionary)["genre_ids"] as AnyObject)
 
                                 self.movieList.append(upcomingMovie)
                             
+                            }
+                        
+                            self.getPosterImage()
+                        
+                        } else {
+                        
+                            let alert = UIAlertController(title: "No more movies", message: "No more upcoming   movies avaiable", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            
                         }
-                        self.getPosterImage()
-                    } else {
-                        
-                        let alert = UIAlertController(title: "No more movies", message: "No more upcoming movies avaiable", preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        
-                    }
                     
-                }
-            })
+                    }
+                })
             }
         }
 
+    }
+    
+    
+    func applyStringValue(value: AnyObject) -> String{
+        
+        var retorno = ""
+        
+        if (nullToNil(value: value) != nil){
+            
+            retorno = value as! String
+            
+        }
+        
+        return retorno
+    }
+    
+    func applyIntArrayValue(value: AnyObject) -> [Int]{
+        
+        var retorno = [Int]()
+        
+        if (nullToNil(value: value) != nil){
+            
+            retorno = value as! [Int]
+            
+        }
+        
+        return retorno
     }
     
     
@@ -227,15 +234,6 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.movieToSend = movieList[indexPath.row]
