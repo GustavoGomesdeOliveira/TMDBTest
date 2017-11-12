@@ -266,17 +266,17 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         
         if (movie.posterImage != nil) {
             
-            cell.ImgMoviePoster.image = movie.posterImage
-            cell.LoadingImageIndicator.stopAnimating()
+            cell.imgMoviePoster.image = movie.posterImage
+            cell.loadingImageIndicator.stopAnimating()
         } else {
             
-            cell.ImgMoviePoster.image = nil
-            cell.LoadingImageIndicator.startAnimating()
+            cell.imgMoviePoster.image = nil
+            cell.loadingImageIndicator.startAnimating()
 
         }
         
-        cell.LblMovieName.text = movie.tittle
-        cell.LblMovieReleaseDate.text = movie.releaseDate
+        cell.lblMovieName.text = movie.tittle
+        cell.lblMovieReleaseDate.text = movie.releaseDate
         return cell;
     }
     

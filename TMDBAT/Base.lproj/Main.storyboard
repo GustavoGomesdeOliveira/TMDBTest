@@ -41,26 +41,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OX-X7-x1h">
-                                                    <rect key="frame" x="16" y="15" width="288" height="264"/>
+                                                    <rect key="frame" x="19" y="15" width="337.5" height="264"/>
                                                     <subviews>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Pnd-xd-0k6">
-                                                            <rect key="frame" x="126" y="113" width="37" height="37"/>
+                                                            <rect key="frame" x="150.5" y="113" width="37" height="37"/>
                                                             <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         </activityIndicatorView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2lc-VQ-ZxP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="264"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="337.5" height="264"/>
                                                         </imageView>
                                                         <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHW-c5-5Rh">
-                                                            <rect key="frame" x="0.0" y="214" width="288" height="50"/>
+                                                            <rect key="frame" x="0.0" y="214" width="337.5" height="50"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MovieName" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUR-bs-bT3">
-                                                                    <rect key="frame" x="10" y="0.0" width="145" height="50"/>
+                                                                    <rect key="frame" x="10" y="0.0" width="168.5" height="50"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRP-EO-83j">
-                                                                    <rect key="frame" x="173" y="14" width="105" height="21"/>
+                                                                    <rect key="frame" x="222.5" y="14" width="105" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -105,10 +105,10 @@
                                             <constraint firstItem="6OX-X7-x1h" firstAttribute="height" secondItem="eHm-8n-k9D" secondAttribute="height" multiplier="0.9" id="yuj-ce-yba"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="ImgMoviePoster" destination="2lc-VQ-ZxP" id="gha-xj-KTD"/>
-                                            <outlet property="LblMovieName" destination="oUR-bs-bT3" id="vEt-8u-Bdb"/>
-                                            <outlet property="LblMovieReleaseDate" destination="SRP-EO-83j" id="ptp-Xi-TLc"/>
-                                            <outlet property="LoadingImageIndicator" destination="Pnd-xd-0k6" id="Pcb-S4-QuA"/>
+                                            <outlet property="imgMoviePoster" destination="2lc-VQ-ZxP" id="nuv-Kc-JbK"/>
+                                            <outlet property="lblMovieName" destination="oUR-bs-bT3" id="p3n-5U-0C3"/>
+                                            <outlet property="lblMovieReleaseDate" destination="SRP-EO-83j" id="dZl-pe-qLm"/>
+                                            <outlet property="loadingImageIndicator" destination="Pnd-xd-0k6" id="1dZ-hP-tc0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
