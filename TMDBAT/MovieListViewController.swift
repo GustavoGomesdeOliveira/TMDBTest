@@ -98,7 +98,8 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
                             let alert = UIAlertController(title: "No more movies", message: "No more upcoming   movies avaiable", preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
-                            
+                            self.loadingView.isHidden = true
+                            self.loadingView.removeFromSuperview()
                         }
                     
                     }
@@ -267,6 +268,11 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
             
             cell.ImgMoviePoster.image = movie.posterImage
             cell.LoadingImageIndicator.stopAnimating()
+        } else {
+            
+            cell.ImgMoviePoster.image = nil
+            cell.LoadingImageIndicator.startAnimating()
+
         }
         
         cell.LblMovieName.text = movie.tittle
