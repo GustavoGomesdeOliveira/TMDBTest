@@ -123,11 +123,13 @@
 				060FA3FA1FB8E4CE007A3BAD /* print05.jpg */,
 			);
 			name = Screenshots;
+			path = TMDBAT;
 			sourceTree = "<group>";
 		};
 		0629DAC31FB755150027451C = {
 			isa = PBXGroup;
 			children = (
+				060FA3F51FB8E4BC007A3BAD /* Screenshots */,
 				0629DACE1FB755150027451C /* TMDBAT */,
 				0629DAE61FB755150027451C /* TMDBATTests */,
 				0629DAF11FB755150027451C /* TMDBATUITests */,
@@ -150,7 +152,6 @@
 		0629DACE1FB755150027451C /* TMDBAT */ = {
 			isa = PBXGroup;
 			children = (
-				060FA3F51FB8E4BC007A3BAD /* Screenshots */,
 				0629DACF1FB755150027451C /* AppDelegate.swift */,
 				06483FA61FB8C61300F39968 /* PosterViewController.swift */,
 				0629DAD31FB755150027451C /* Main.storyboard */,
